@@ -40,6 +40,10 @@ public class App {
         System.out.println("Liga: " + ligaLigue1.getNome());
         System.out.println("Instituição: " + cbf.getNome());
 
+        if(jogador1.getNumeroCamisa() == 10){
+            System.out.println("Este jogador é craque!!!");
+        }
+
         // Transferir jogador1 para outro time
         Time novoTime = new Time("FC Barcelona", 5, new ArrayList<>(), tecnico);
         jogador1.transferirPara(novoTime, 11);
