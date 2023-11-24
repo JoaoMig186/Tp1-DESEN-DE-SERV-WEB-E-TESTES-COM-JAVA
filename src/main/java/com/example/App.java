@@ -1,5 +1,7 @@
 package com.example;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.example.clube.Time;
 import com.example.pessoas.Jogador;
 import com.example.pessoas.Tecnico;
@@ -12,7 +14,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+
 public class App {
+    private static final Logger logger = LoggerFactory.getLogger(App.class); // Corrigindo o nome da classe
     public static void main(String[] args) {
         // Criar jogadores
         Jogador jogador1 = new Jogador("Neymar Jr.", 30, "Paris Saint-Germain", 10);
@@ -34,22 +38,24 @@ public class App {
         Instituicao cbf = new Instituicao("Confederação Brasileira de Futebol", new ArrayList<>(Collections.singletonList(ligaLigue1)));
 
         // Exemplo de operações
-        System.out.println("Time: " + timePSG.getNome());
-        System.out.println("Técnico: " + timePSG.getTecnico().getNome());
-        System.out.println("Estádio: " + estadioPSG.getNome());
-        System.out.println("Liga: " + ligaLigue1.getNome());
-        System.out.println("Instituição: " + cbf.getNome());
+        logger.info("Time: {}", timePSG.getNome());
+        logger.debug("Debug: Informações detalhadas");
+        logger.error("Erro: Ocorreu um erro crítico ao manipular esse sistma");
+        logger.info("Técnico: {}", timePSG.getTecnico().getNome());
+        logger.info("Estádio: {}", estadioPSG.getNome());
+        logger.info("Liga: {}", ligaLigue1.getNome());
+        logger.info("Instituição: {}", cbf.getNome());
 
         // Transferir jogador1 para outro time
         Time novoTime = new Time("FC Barcelona", 5, new ArrayList<>(), tecnico);
         jogador1.transferirPara(novoTime, 11);
 
-        System.out.println("Após a transferência:");
-        System.out.println("Jogador 1 está no time " + jogador1.getClubeAtual());
-        System.out.println("Jogador 1 está usando a camisa " + jogador1.getNumeroCamisa());
+        logger.info("Após a transferência:");
+        logger.info("Jogador 1 está no time {}", jogador1.getClubeAtual());
+        logger.info("Jogador 1 está usando a camisa {}", jogador1.getNumeroCamisa());
 
         // Liderar o time com o técnico
         tecnico.liderarTime(novoTime);
-        System.out.println("O técnico " + tecnico.getNome() + " está liderando o time " + novoTime.getNome());
+        logger.info("O técnico {} está liderando o time {}", tecnico.getNome(), novoTime.getNome());
     }
 }
