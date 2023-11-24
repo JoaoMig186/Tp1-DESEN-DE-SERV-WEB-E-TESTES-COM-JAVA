@@ -1,5 +1,7 @@
 package com.example;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.example.clube.Time;
 import com.example.pessoas.Jogador;
 import com.example.pessoas.Tecnico;
@@ -10,9 +12,10 @@ import com.example.federacao.Instituicao;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 public class App {
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
+
     public static void main(String[] args) {
         // Criar jogadores
         Jogador jogador1 = new Jogador("Neymar Jr.", 30, "Paris Saint-Germain", 10);
@@ -24,7 +27,7 @@ public class App {
         // Criar time e adicionar jogadores e técnico
         Time timePSG = new Time("Paris Saint-Germain", 10, new ArrayList<>(Arrays.asList(jogador1, jogador2)), tecnico);
 
-        // Criar estadio
+        // Criar estádio
         Estadio estadioPSG = new Estadio("Parc des Princes", 48000);
 
         // Criar liga e adicionar time
@@ -34,11 +37,13 @@ public class App {
         Instituicao cbf = new Instituicao("Confederação Brasileira de Futebol", new ArrayList<>(Collections.singletonList(ligaLigue1)));
 
         // Exemplo de operações
-        System.out.println("Time: " + timePSG.getNome());
-        System.out.println("Técnico: " + timePSG.getTecnico().getNome());
-        System.out.println("Estádio: " + estadioPSG.getNome());
-        System.out.println("Liga: " + ligaLigue1.getNome());
-        System.out.println("Instituição: " + cbf.getNome());
+        logger.info("Time: {}", timePSG.getNome());
+        logger.debug("Debug: Informações detalhadas");
+        logger.error("Erro: Ocorreu um erro crítico ao manipular esse sistema");
+        logger.info("Técnico: {}", timePSG.getTecnico().getNome());
+        logger.info("Estádio: {}", estadioPSG.getNome());
+        logger.info("Liga: {}", ligaLigue1.getNome());
+        logger.info("Instituição: {}", cbf.getNome());
 
         if(jogador1.getNumeroCamisa() == 10){
             System.out.println("Este jogador é craque!!!");
@@ -48,12 +53,12 @@ public class App {
         Time novoTime = new Time("FC Barcelona", 5, new ArrayList<>(), tecnico);
         jogador1.transferirPara(novoTime, 11);
 
-        System.out.println("Após a transferência:");
-        System.out.println("Jogador 1 está no time " + jogador1.getClubeAtual());
-        System.out.println("Jogador 1 está usando a camisa " + jogador1.getNumeroCamisa());
+        logger.info("Após a transferência:");
+        logger.info("Jogador 1 está no time {}", jogador1.getClubeAtual());
+        logger.info("Jogador 1 está usando a camisa {}", jogador1.getNumeroCamisa());
 
         // Liderar o time com o técnico
         tecnico.liderarTime(novoTime);
-        System.out.println("O técnico " + tecnico.getNome() + " está liderando o time " + novoTime.getNome());
+        logger.info("O técnico {} está liderando o time {}", tecnico.getNome(), novoTime.getNome());
     }
 }
