@@ -12,11 +12,10 @@ import com.example.federacao.Instituicao;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
-
 
 public class App {
-    private static final Logger logger = LoggerFactory.getLogger(App.class); // Corrigindo o nome da classe
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
+
     public static void main(String[] args) {
         // Criar jogadores
         Jogador jogador1 = new Jogador("Neymar Jr.", 30, "Paris Saint-Germain", 10);
@@ -28,7 +27,7 @@ public class App {
         // Criar time e adicionar jogadores e técnico
         Time timePSG = new Time("Paris Saint-Germain", 10, new ArrayList<>(Arrays.asList(jogador1, jogador2)), tecnico);
 
-        // Criar estadio
+        // Criar estádio
         Estadio estadioPSG = new Estadio("Parc des Princes", 48000);
 
         // Criar liga e adicionar time
@@ -40,7 +39,7 @@ public class App {
         // Exemplo de operações
         logger.info("Time: {}", timePSG.getNome());
         logger.debug("Debug: Informações detalhadas");
-        logger.error("Erro: Ocorreu um erro crítico ao manipular esse sistma");
+        logger.error("Erro: Ocorreu um erro crítico ao manipular esse sistema");
         logger.info("Técnico: {}", timePSG.getTecnico().getNome());
         logger.info("Estádio: {}", estadioPSG.getNome());
         logger.info("Liga: {}", ligaLigue1.getNome());
