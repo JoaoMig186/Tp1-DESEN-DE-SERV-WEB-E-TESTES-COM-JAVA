@@ -50,4 +50,5 @@ public class Tecnico {
     public void setFormacao(String formacao) {
         this.formacao = formacao;
     }
+
 }
